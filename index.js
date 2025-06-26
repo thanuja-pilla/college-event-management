@@ -1,37 +1,35 @@
-require("dotenv").config(); // ✅ Loads .env file
-
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const { MongoClient } = require("mongodb");
+require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
-// ✅ Use environment variable for MongoDB URL
+// ✅ Use port from environment for hosting (important for Render)
+const PORT = process.env.PORT || 10000;
+
+// ✅ MongoDB connection string from .env
 const mongoURL = process.env.MONGO_URL;
 const dbName = "eventdb";
 
 app.use(cors());
 app.use(express.json());
 
-// ✅ Serve static files from public directory
+// ✅ Serve HTML files from 'public' folder
 app.use(express.static(path.join(__dirname, "public")));
 
 let collection;
 
-// ✅ Connect to MongoDB
-MongoClient.connect(mongoURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+// ✅ Connect to MongoDB Atlas
+MongoClient.connect(mongoURL)
   .then((client) => {
     console.log("✅ Connected to MongoDB");
     const db = client.db(dbName);
     collection = db.collection("events");
 
-    // ✅ Start the server *after* DB connection
-    app.listen(PORT, () => {
+    // ✅ Start the server
+    app.listen(PORT, "0.0.0.0", () => {
       console.log(`🚀 Server running at http://localhost:${PORT}`);
     });
   })
@@ -49,7 +47,7 @@ app.get("/api/events", async (req, res) => {
   }
 });
 
-// ✅ Add new event
+// ✅ Add a new event
 app.post("/api/events", async (req, res) => {
   const { name, type, startDate, endDate, url, eligibility, description } =
     req.body;
