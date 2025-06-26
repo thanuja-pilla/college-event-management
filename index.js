@@ -1,3 +1,5 @@
+require("dotenv").config(); // ✅ Loads .env file
+
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
@@ -6,24 +8,29 @@ const { MongoClient } = require("mongodb");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// ✅ Use environment variable for MongoDB URL
 const mongoURL = process.env.MONGO_URL;
 const dbName = "eventdb";
 
 app.use(cors());
 app.use(express.json());
 
-// Serve static files like addevent.html, viewevents.html from /public
+// ✅ Serve static files from public directory
 app.use(express.static(path.join(__dirname, "public")));
 
 let collection;
 
 // ✅ Connect to MongoDB
-MongoClient.connect(mongoURL)
+MongoClient.connect(mongoURL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then((client) => {
     console.log("✅ Connected to MongoDB");
     const db = client.db(dbName);
     collection = db.collection("events");
 
+    // ✅ Start the server *after* DB connection
     app.listen(PORT, () => {
       console.log(`🚀 Server running at http://localhost:${PORT}`);
     });

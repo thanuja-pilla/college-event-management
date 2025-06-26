@@ -1,16 +1,17 @@
 {
   "name": "college-event-management",
   "version": "1.0.0",
+  "description": "A Node.js app for managing college events.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "Thanuja pilla <thanujapilla7@gmail.com>",
+  "author": "Thanuja Pilla <thanujapilla7@gmail.com>",
   "license": "ISC",
-  "description": "",
+  "keywords": [],
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "mongodb": "^6.17.0"
   }
