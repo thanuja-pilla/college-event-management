@@ -4,7 +4,7 @@ const path = require("path");
 const { MongoClient } = require("mongodb");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 const mongoURL = process.env.MONGO_URL;
 const dbName = "eventdb";
