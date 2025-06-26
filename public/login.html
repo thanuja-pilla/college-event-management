@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Login</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script defer>
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("admin-form");
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const password = document.getElementById("admin-password").value;
+
+          // ✅ Change password here securely (for real apps, use backend auth)
+          const ADMIN_PASSWORD = atob("YWRtaW4xMjM="); // "admin123" encoded
+
+          if (password === ADMIN_PASSWORD) {
+            localStorage.setItem("isAdmin", "true");
+            alert("✅ Logged in as Admin!");
+            window.location.href = "addevent.html";
+          } else {
+            alert("❌ Incorrect Password");
+          }
+        });
+      });
+    </script>
+  </head>
+  <body class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="bg-white shadow-lg p-6 rounded-xl w-96">
+      <h2 class="text-xl font-bold text-center mb-4">Admin Login</h2>
+      <form id="admin-form" class="space-y-4">
+        <input
+          id="admin-password"
+          type="password"
+          placeholder="Enter Admin Password"
+          class="w-full p-3 border rounded-lg"
+          required
+        />
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-2 rounded-lg"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

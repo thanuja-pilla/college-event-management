@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add New Event</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-xl">
+      <h2 class="text-2xl font-bold text-blue-600 mb-6 text-center">
+        🎯 Add New Event
+      </h2>
+      <form id="event-form" class="space-y-4">
+        <div>
+          <label for="event-name" class="block font-semibold text-gray-700"
+            >Event Name</label
+          >
+          <input
+            id="event-name"
+            type="text"
+            required
+            class="w-full mt-1 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+
+        <div>
+          <label for="event-type" class="block font-semibold text-gray-700"
+            >Select Event Type</label
+          >
+          <select
+            id="event-type"
+            required
+            class="w-full mt-1 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
+            <option value="">-- Select Type --</option>
+            <option value="Hackathon">Hackathon</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Internship">Internship</option>
+            <option value="Challenge">Challenge</option>
+          </select>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="w-1/2">
+            <label
+              for="event-start-date"
+              class="block font-semibold text-gray-700"
+              >Start Date</label
+            >
+            <input
+              id="event-start-date"
+              type="date"
+              required
+              class="w-full mt-1 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+          <div class="w-1/2">
+            <label
+              for="event-end-date"
+              class="block font-semibold text-gray-700"
+              >End Date</label
+            >
+            <input
+              id="event-end-date"
+              type="date"
+              required
+              class="w-full mt-1 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="event-url" class="block font-semibold text-gray-700"
+            >Event URL</label
+          >
+          <input
+            id="event-url"
+            type="url"
+            placeholder="https://example.com"
+            class="w-full mt-1 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+
+        <div>
+          <label
+            for="event-description"
+            class="block font-semibold text-gray-700"
+            >Event Description</label
+          >
+          <textarea
+            id="event-description"
+            required
+            rows="3"
+            class="w-full mt-1 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          ></textarea>
+        </div>
+
+        <div>
+          <label
+            for="event-eligibility"
+            class="block font-semibold text-gray-700"
+            >Eligibility Criteria</label
+          >
+          <textarea
+            id="event-eligibility"
+            rows="2"
+            class="w-full mt-1 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          ></textarea>
+        </div>
+
+        <div class="text-center pt-4">
+          <button
+            type="submit"
+            class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-300"
+          >
+            ➕ Add Event
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script src="/js/addevent.js"></script>
+  </body>
+</html>
