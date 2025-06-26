@@ -6,7 +6,7 @@ const { MongoClient } = require("mongodb");
 const app = express();
 const PORT = 5000;
 
-const mongoURL = "mongodb://localhost:27017";
+const mongoURL = process.env.MONGO_URL;
 const dbName = "eventdb";
 
 app.use(cors());
